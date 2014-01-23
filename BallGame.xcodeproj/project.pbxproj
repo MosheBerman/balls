@@ -21,6 +21,7 @@
 		462C7AFE1891DDD40020F8BB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462C7AE01891DDD40020F8BB /* UIKit.framework */; };
 		462C7B061891DDD40020F8BB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 462C7B041891DDD40020F8BB /* InfoPlist.strings */; };
 		462C7B081891DDD40020F8BB /* BallGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C7B071891DDD40020F8BB /* BallGameTests.m */; };
+		462C7B131891DDEE0020F8BB /* BAGBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C7B121891DDEE0020F8BB /* BAGBall.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		462C7B031891DDD40020F8BB /* BallGameTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BallGameTests-Info.plist"; sourceTree = "<group>"; };
 		462C7B051891DDD40020F8BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		462C7B071891DDD40020F8BB /* BallGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BallGameTests.m; sourceTree = "<group>"; };
+		462C7B111891DDEE0020F8BB /* BAGBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BAGBall.h; path = BagBall/BAGBall.h; sourceTree = "<group>"; };
+		462C7B121891DDEE0020F8BB /* BAGBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BAGBall.m; path = BagBall/BAGBall.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				462C7AEE1891DDD40020F8BB /* Main.storyboard */,
 				462C7AF11891DDD40020F8BB /* BAGViewController.h */,
 				462C7AF21891DDD40020F8BB /* BAGViewController.m */,
+				462C7B111891DDEE0020F8BB /* BAGBall.h */,
+				462C7B121891DDEE0020F8BB /* BAGBall.m */,
 				462C7AF41891DDD40020F8BB /* Images.xcassets */,
 				462C7AE31891DDD40020F8BB /* Supporting Files */,
 			);
@@ -251,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				462C7AE91891DDD40020F8BB /* main.m in Sources */,
+				462C7B131891DDEE0020F8BB /* BAGBall.m in Sources */,
 				462C7AED1891DDD40020F8BB /* BAGAppDelegate.m in Sources */,
 				462C7AF31891DDD40020F8BB /* BAGViewController.m in Sources */,
 			);
