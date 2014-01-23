@@ -18,6 +18,11 @@
 
 @implementation BAGBall
 
++ (BAGBall *)ballWithRadius:(CGFloat)radius
+{
+    return [[BAGBall alloc] initWithRadius:radius];
+}
+
 - (id)initWithRadius:(CGFloat)radius
 {
     
