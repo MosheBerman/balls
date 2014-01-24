@@ -32,8 +32,8 @@
     if (self) {
         // Initialization code
         _radius = radius;
-        _color = [UIColor blackColor];
-        _borderWidth = arc4random() % 5 + 1;
+        _color = [UIColor randomColor];
+        _borderWidth = arc4random() % 10 + 1;
     }
     return self;
 }
@@ -52,6 +52,7 @@
     [super willMoveToSuperview:newSuperview];
     self.layer.cornerRadius = _radius;
     self.layer.borderColor = self.color.CGColor;
+    self.backgroundColor = [self.color colorWithAlphaComponent:0.8];
     self.layer.borderWidth = self.borderWidth;
 }
 
