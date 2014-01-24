@@ -207,7 +207,7 @@
     }
     else
     {
-        [[self view] setTintColor:nil];
+        [[self view] setTintColor:[[[self view] backgroundColor] inverseColor]];
     }
     
     for (BAGBall *ball in [self balls]) {
@@ -238,6 +238,7 @@
                             options:UIViewAnimationOptionAllowUserInteraction
                          animations:^{
                              [[self view] setBackgroundColor:averageColor];
+                             [[self view] setTintColor:[averageColor inverseColor]];
                              
                          }
                          completion:^(BOOL finished) {
@@ -263,5 +264,7 @@
 {
     return [[self colorToggle] selectedSegmentIndex] == 0;
 }
+
+
 
 @end
