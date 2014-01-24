@@ -278,7 +278,7 @@
     BOOL available = [[self motionManager] isAccelerometerAvailable];
     
     if (!available) {
-        NSLog(@"No gyro.");
+        NSLog(@"No accelerometer.");
     }
     
     [[self motionManager] startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
