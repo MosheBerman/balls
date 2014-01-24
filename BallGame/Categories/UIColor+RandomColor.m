@@ -44,4 +44,19 @@
     return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
+- (UIColor *)inverseColor
+{
+    
+    CGColorRef firstColor = [self CGColor];
+    const float* components = CGColorGetComponents(firstColor);
+    
+    CGFloat red = 1.0 - components[0];
+    CGFloat green = 1.0 - components[1];
+    CGFloat blue = 1.0 - components[2];
+    CGFloat alpha = 1.0 - components[3];
+    
+    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+}
+
+
 @end
