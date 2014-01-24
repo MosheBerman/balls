@@ -22,7 +22,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super init];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _balls = [[NSMutableSet alloc] init];
         _uninstalledBalls = [[NSMutableSet alloc] init];
@@ -90,4 +90,9 @@
     [[self uninstalledBalls] removeAllObjects];
 }
 
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return YES;
+}
 @end
