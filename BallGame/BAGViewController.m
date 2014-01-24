@@ -16,17 +16,21 @@
 
 @interface BAGViewController () <UICollisionBehaviorDelegate>
 
+/* Basic Ball Contents */
 @property (nonatomic, strong) NSMutableArray *balls;
 @property (nonatomic, strong) NSMutableSet *ballsToAdd;
 @property (nonatomic, strong) NSMutableSet *oldBalls;
 @property (nonatomic, assign) NSInteger maximumVisibleBalls;
 
+/* UIKity Dynamics */
 @property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) UIGravityBehavior *gravity;
 @property (nonatomic, strong) UICollisionBehavior *collision;
 
+/* Color vs Grayscale */
 @property (strong, nonatomic) IBOutlet UISegmentedControl *colorToggle;
 
+/* Motion Tracking */
 @property (nonatomic, strong) CMMotionManager *motionManager;
 @property (nonatomic, strong) CMAccelerometerData *data;
 @property (nonatomic, assign) CGPoint originalCenter;
