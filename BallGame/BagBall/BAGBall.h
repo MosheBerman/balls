@@ -15,6 +15,7 @@ typedef void(^BAGBallAnimationCompletionBlock)(void);
 
 @property (nonatomic, strong) UIColor *color;
 @property (nonatomic, assign) CGFloat borderWidth;
+@property (nonatomic, strong) UITouch *touchToFollow;
 
 + (BAGBall *)ballWithRadius:(CGFloat)radius;
 - (id)initWithRadius:(CGFloat)radius;

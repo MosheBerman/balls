@@ -35,6 +35,7 @@
         _radius = radius;
         _color = [UIColor randomColor];
         _borderWidth = arc4random() % 10 + 1;
+        _touchToFollow = nil;
     }
     return self;
 }
@@ -57,6 +58,7 @@
     self.layer.borderWidth = self.borderWidth;
     
     self.alpha = 0;
+    self.transform = CGAffineTransformIdentity;
     self.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0, 0);
 }
 
@@ -97,7 +99,7 @@
 - (void)removeFromSuperviewWithAnimationCompletion:(BAGBallAnimationCompletionBlock)completion
 {
     
-    [UIView animateWithDuration:0.3
+    [UIView animateWithDuration:0.1f
                      animations:^{
                          CGAffineTransform t = CGAffineTransformScale(self.transform, 0, 0);
                          [self setTransform:t];
