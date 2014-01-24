@@ -13,6 +13,7 @@
 #import <tgmath.h>
 
 @import CoreMotion;
+@import AVFoundation;
 
 @interface BAGViewController () <UICollisionBehaviorDelegate>
 
@@ -34,6 +35,11 @@
 @property (nonatomic, strong) CMMotionManager *motionManager;
 @property (nonatomic, strong) CMAccelerometerData *data;
 @property (nonatomic, assign) CGPoint originalCenter;
+
+/* Sound Effects */
+@property (readwrite) CFURLRef ballAgainstBallFileURLRef;
+@property (readonly) SystemSoundID ballAgainstBallSoundID;
+
 
 @end
 
@@ -57,7 +63,6 @@
         _collision.collisionDelegate = self;
         _motionManager = [[CMMotionManager alloc] init];
         _originalCenter = CGPointZero;
-        
     }
     return self;
 }
@@ -68,7 +73,14 @@
     
     //  By default, grayscale UI.
     [[self view] setTintColor:[UIColor grayColor]];
-
+    
+    /* Configure Sounds */
+    NSURL *sound = [[NSBundle mainBundle] URLForResource:@"collision" withExtension:@"m4a"];
+	
+	_ballAgainstBallFileURLRef = CFBridgingRetain(sound);
+	
+	AudioServicesCreateSystemSoundID(_ballAgainstBallFileURLRef, &_ballAgainstBallSoundID);
+    
     [self reposition];
 }
 
@@ -225,6 +237,8 @@
     if ([item1 isKindOfClass:[BAGBall class]] && [item2 isKindOfClass:[BAGBall class]])
     {
         
+        AudioServicesPlaySystemSound(_ballAgainstBallSoundID);
+        
         BAGBall *firstBall = (BAGBall *)item1;
         BAGBall *secondBall = (BAGBall *)item2;
         
@@ -245,17 +259,11 @@
                              
                          }];
     }
-    
-    /* If  a ball collides with a boundry or UI elemeent. */
-    else if ([item1 isKindOfClass:[BAGBall class]] || [item2 isKindOfClass:[BAGBall class]])
-    {
-        
-    }
 }
 
-- (void)collisionBehavior:(UICollisionBehavior*)behavior endedContactForItem:(id <UIDynamicItem>)item1 withItem:(id <UIDynamicItem>)item2
+- (void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p
 {
-    
+    AudioServicesPlaySystemSound(_ballAgainstBallSoundID);
 }
 
 #pragma mark - Grayscale Vs Color
@@ -316,7 +324,29 @@
     return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 50.0f : 20.0f;
 }
 
+#pragma mark - Sound Effects
 
+/**
+ *  This method registers a sound with AVFoundation for playback
+ */
+- (void)prepareSoundWithName:(NSString *)name andExtension:(NSString*)extension forFileRef:(CFURLRef)fileRef withSoundID:(SystemSoundID)soundID
+{
 
+    NSURL *sound = [[NSBundle mainBundle] URLForResource:name withExtension: extension];
+	
+	fileRef = CFBridgingRetain(sound);
+	
+	AudioServicesCreateSystemSoundID(fileRef, &soundID);
+    
+}
+
+/**
+ *  This method actually plays a sound.
+ */
+ 
+- (void)playSound:(SystemSoundID)soundID
+{
+    AudioServicesPlaySystemSound(soundID);
+}
 
 @end
