@@ -12,5 +12,6 @@
 @interface UIColor (RandomColor)
 
 + (UIColor *)randomColor;
++ (UIColor *)randomShadeOfGray;
 
 @end
