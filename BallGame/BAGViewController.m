@@ -43,12 +43,56 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     for (UITouch *touch in touches)
     {
         CGPoint location = [touch locationInView:self.view];
-        [self newBallAtPoint:location];
+        
+        BAGBall *ballBeingTouched = nil;
+        
+        for (BAGBall *ball in self.balls) {
+            if (CGRectContainsPoint(ball.frame, location)) {
+                ballBeingTouched = ball;
+            }
+            
+            if (ballBeingTouched)
+            {
+                break;
+            }
+        }
+        
+        if (!ballBeingTouched) {
+            [self newBallAtPoint:location];
+        }
+        else
+        {
+            //  Drag ball
+            ballBeingTouched.touchToFollow = touch;
+        }
+    }
+    
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for (UITouch *touch in touches) {
+        for (BAGBall *ball in self.balls) {
+            if ([ball.touchToFollow isEqual:touch]) {
+                [ball setCenter:[touch locationInView:self.view]];
+                [[self view] bringSubviewToFront:ball];
+                break;
+            }
+        }
+    }
+}
+
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for (BAGBall *ball in self.balls) {
+        ball.touchToFollow = nil;
     }
     
     [self performSelectorOnMainThread:@selector(installQueuedBalls) withObject:Nil waitUntilDone:NO];
