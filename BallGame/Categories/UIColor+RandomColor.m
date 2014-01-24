@@ -28,4 +28,20 @@
     return [UIColor colorWithRed:component green:component blue:component alpha:1.0];
 }
 
++ (UIColor *)averageBetweenColor:(UIColor *)color andColor:(UIColor *)anotherColor
+{
+    CGColorRef firstColor = [color CGColor];
+    CGColorRef secondColor = [anotherColor CGColor];
+    
+    const float* firstComponents = CGColorGetComponents(firstColor);
+    const float* secondComponents = CGColorGetComponents(secondColor);
+    
+    CGFloat red = (firstComponents[0] + secondComponents[0])/2.0f;
+    CGFloat green = (firstComponents[1] + secondComponents[1])/2.0f;
+    CGFloat blue = (firstComponents[2] + secondComponents[2])/2.0f;
+    CGFloat alpha = (firstComponents[3] + secondComponents[3])/2.0f;
+    
+    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+}
+
 @end

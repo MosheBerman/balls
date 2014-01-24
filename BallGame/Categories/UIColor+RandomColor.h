@@ -14,4 +14,6 @@
 + (UIColor *)randomColor;
 + (UIColor *)randomShadeOfGray; //  Can't ever produce white, always at least slighlty darker
 
++ (UIColor *)averageBetweenColor:(UIColor *)color andColor:(UIColor *)anotherColor;
+
 @end
