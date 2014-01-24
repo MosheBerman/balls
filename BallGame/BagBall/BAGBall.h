@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "UIColor+RandomColor.h"
 
+typedef void(^BAGBallAnimationCompletionBlock)(void);
+
 @interface BAGBall : UIView
 
 @property (nonatomic, strong) UIColor *color;
@@ -16,5 +18,9 @@
 
 + (BAGBall *)ballWithRadius:(CGFloat)radius;
 - (id)initWithRadius:(CGFloat)radius;
+
+- (void)addToSuperview:(UIView *)view WithAnimationCompletion:(BAGBallAnimationCompletionBlock)completion;
+- (void)removeFromSuperviewWithAnimationCompletion:(BAGBallAnimationCompletionBlock)completion;
+
 
 @end
