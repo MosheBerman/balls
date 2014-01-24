@@ -23,7 +23,7 @@
 + (UIColor *)randomShadeOfGray
 {
     
-    CGFloat component = (CGFloat)(arc4random() % 255 + 0)/255.0;
+    CGFloat component = (CGFloat)(arc4random() % 255 + 2)/255.0;
     
     return [UIColor colorWithRed:component green:component blue:component alpha:1.0];
 }

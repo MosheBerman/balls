@@ -12,6 +12,6 @@
 @interface UIColor (RandomColor)
 
 + (UIColor *)randomColor;
-+ (UIColor *)randomShadeOfGray;
++ (UIColor *)randomShadeOfGray; //  Can't ever produce white, always at least slighlty darker
 
 @end
