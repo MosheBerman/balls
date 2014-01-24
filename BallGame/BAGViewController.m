@@ -20,13 +20,13 @@
 
 @implementation BAGViewController
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithCoder:aDecoder];
+    self = [super init];
     if (self) {
         _balls = [[NSMutableSet alloc] init];
         _uninstalledBalls = [[NSMutableSet alloc] init];
-        _maximumVisibleBalls = 20;
+        _maximumVisibleBalls = 50;
     }
     return self;
 }
@@ -43,16 +43,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    
-}
-
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     for (UITouch *touch in touches)
@@ -61,10 +51,7 @@
         [self newBallAtPoint:location];
     }
     
-    [self installQueuedBalls];
-
-    
-    
+    [self performSelectorOnMainThread:@selector(installQueuedBalls) withObject:Nil waitUntilDone:NO];
 }
 
 #pragma mark - New Ball

@@ -7,12 +7,27 @@
 //
 
 #import "BAGAppDelegate.h"
+#import "BAGViewController.h"
 
+
+@interface BAGAppDelegate ()
+
+@property (nonatomic, strong) BAGViewController *arena;
+
+@end
 @implementation BAGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    BAGViewController *viewcontroller = [[BAGViewController alloc] initWithNibName:@"BAGViewController" bundle:nil];
+    self.arena = viewcontroller;
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = self.arena;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 							
