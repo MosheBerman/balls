@@ -10,7 +10,7 @@
 
 #import "BAGBall.h"
 
-@interface BAGViewController ()
+@interface BAGViewController () <UICollisionBehaviorDelegate>
 
 @property (nonatomic, strong) NSMutableArray *balls;
 @property (nonatomic, strong) NSMutableSet *ballsToAdd;
@@ -51,7 +51,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    //  By default, grayscale UI.
+    [[self view] setTintColor:[UIColor grayColor]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -198,11 +200,50 @@
 - (IBAction)didToggleColor:(id)sender
 {
 
-    BOOL isGray = [[self colorToggle] selectedSegmentIndex] == 0;
+    BOOL isGray = [self isGrayscale];
+    
+    if (isGray) {
+        [[self view] setTintColor:[UIColor grayColor]];
+    }
+    else
+    {
+        [[self view] setTintColor:nil];
+    }
     
     for (BAGBall *ball in [self balls]) {
         [ball setIsGrayScale:isGray];
     }
     
+    
 }
+
+#pragma mark - UICollisionBehaviorDelegate
+
+- (void)collisionBehavior:(UICollisionBehavior*)behavior beganContactForItem:(id <UIDynamicItem>)item1 withItem:(id <UIDynamicItem>)item2 atPoint:(CGPoint)p
+{
+    /* If two balls collide... */
+    if ([item1 isKindOfClass:[BAGBall class]] && [item2 isKindOfClass:[BAGBall class]])
+    {
+        
+    }
+    
+    /* If  a ball collides with a boundry or UI elemeent. */
+    else if ([item1 isKindOfClass:[BAGBall class]] || [item2 isKindOfClass:[BAGBall class]])
+    {
+        
+    }
+}
+
+- (void)collisionBehavior:(UICollisionBehavior*)behavior endedContactForItem:(id <UIDynamicItem>)item1 withItem:(id <UIDynamicItem>)item2
+{
+    
+}
+
+#pragma mark - Grayscale Vs Color
+
+- (BOOL)isGrayscale
+{
+    return [[self colorToggle] selectedSegmentIndex] == 0;
+}
+
 @end
