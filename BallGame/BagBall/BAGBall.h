@@ -24,5 +24,6 @@ typedef void(^BAGBallAnimationCompletionBlock)(void);
 - (void)addToSuperview:(UIView *)view WithAnimationCompletion:(BAGBallAnimationCompletionBlock)completion;
 - (void)removeFromSuperviewWithAnimationCompletion:(BAGBallAnimationCompletionBlock)completion;
 
+- (UIColor *)activeColor;
 
 @end

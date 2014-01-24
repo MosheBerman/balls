@@ -139,4 +139,14 @@
                      }];
     
 }
+
+#pragma mark - Active Color
+
+- (UIColor *)activeColor
+{
+    if ([self isGrayScale]) {
+        return [self grayColor];
+    }
+    return [self color];
+}
 @end
