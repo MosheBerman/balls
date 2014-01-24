@@ -13,7 +13,6 @@
 		462C7AE71891DDD40020F8BB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 462C7AE51891DDD40020F8BB /* InfoPlist.strings */; };
 		462C7AE91891DDD40020F8BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C7AE81891DDD40020F8BB /* main.m */; };
 		462C7AED1891DDD40020F8BB /* BAGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C7AEC1891DDD40020F8BB /* BAGAppDelegate.m */; };
-		462C7AF01891DDD40020F8BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 462C7AEE1891DDD40020F8BB /* Main.storyboard */; };
 		462C7AF31891DDD40020F8BB /* BAGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C7AF21891DDD40020F8BB /* BAGViewController.m */; };
 		462C7AF51891DDD40020F8BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 462C7AF41891DDD40020F8BB /* Images.xcassets */; };
 		462C7AFC1891DDD40020F8BB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462C7AFB1891DDD40020F8BB /* XCTest.framework */; };
@@ -23,6 +22,7 @@
 		462C7B081891DDD40020F8BB /* BallGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C7B071891DDD40020F8BB /* BallGameTests.m */; };
 		462C7B131891DDEE0020F8BB /* BAGBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C7B121891DDEE0020F8BB /* BAGBall.m */; };
 		462C7B161891E3DE0020F8BB /* UIColor+RandomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C7B151891E3DE0020F8BB /* UIColor+RandomColor.m */; };
+		462C7B181891F1130020F8BB /* BAGViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 462C7B171891F1130020F8BB /* BAGViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +46,6 @@
 		462C7AEA1891DDD40020F8BB /* BallGame-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BallGame-Prefix.pch"; sourceTree = "<group>"; };
 		462C7AEB1891DDD40020F8BB /* BAGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BAGAppDelegate.h; sourceTree = "<group>"; };
 		462C7AEC1891DDD40020F8BB /* BAGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BAGAppDelegate.m; sourceTree = "<group>"; };
-		462C7AEF1891DDD40020F8BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		462C7AF11891DDD40020F8BB /* BAGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BAGViewController.h; sourceTree = "<group>"; };
 		462C7AF21891DDD40020F8BB /* BAGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BAGViewController.m; sourceTree = "<group>"; };
 		462C7AF41891DDD40020F8BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -59,6 +58,7 @@
 		462C7B121891DDEE0020F8BB /* BAGBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BAGBall.m; path = BagBall/BAGBall.m; sourceTree = "<group>"; };
 		462C7B141891E3DE0020F8BB /* UIColor+RandomColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+RandomColor.h"; path = "Categories/UIColor+RandomColor.h"; sourceTree = "<group>"; };
 		462C7B151891E3DE0020F8BB /* UIColor+RandomColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+RandomColor.m"; path = "Categories/UIColor+RandomColor.m"; sourceTree = "<group>"; };
+		462C7B171891F1130020F8BB /* BAGViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BAGViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +120,7 @@
 			children = (
 				462C7AEB1891DDD40020F8BB /* BAGAppDelegate.h */,
 				462C7AEC1891DDD40020F8BB /* BAGAppDelegate.m */,
-				462C7AEE1891DDD40020F8BB /* Main.storyboard */,
+				462C7B171891F1130020F8BB /* BAGViewController.xib */,
 				462C7AF11891DDD40020F8BB /* BAGViewController.h */,
 				462C7AF21891DDD40020F8BB /* BAGViewController.m */,
 				462C7B111891DDEE0020F8BB /* BAGBall.h */,
@@ -239,9 +239,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				462C7B181891F1130020F8BB /* BAGViewController.xib in Resources */,
 				462C7AF51891DDD40020F8BB /* Images.xcassets in Resources */,
 				462C7AE71891DDD40020F8BB /* InfoPlist.strings in Resources */,
-				462C7AF01891DDD40020F8BB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,14 +293,6 @@
 				462C7AE61891DDD40020F8BB /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		462C7AEE1891DDD40020F8BB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				462C7AEF1891DDD40020F8BB /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		462C7B041891DDD40020F8BB /* InfoPlist.strings */ = {
@@ -391,11 +383,13 @@
 		462C7B0C1891DDD40020F8BB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BallGame/BallGame-Prefix.pch";
 				INFOPLIST_FILE = "BallGame/BallGame-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -404,11 +398,13 @@
 		462C7B0D1891DDD40020F8BB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BallGame/BallGame-Prefix.pch";
 				INFOPLIST_FILE = "BallGame/BallGame-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
