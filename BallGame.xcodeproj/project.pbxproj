@@ -23,6 +23,8 @@
 		462C7B131891DDEE0020F8BB /* BAGBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C7B121891DDEE0020F8BB /* BAGBall.m */; };
 		462C7B161891E3DE0020F8BB /* UIColor+RandomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C7B151891E3DE0020F8BB /* UIColor+RandomColor.m */; };
 		462C7B181891F1130020F8BB /* BAGViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 462C7B171891F1130020F8BB /* BAGViewController.xib */; };
+		462C7B6218929C230020F8BB /* marble-on-marble.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 462C7B6018929C230020F8BB /* marble-on-marble.m4a */; };
+		462C7B6318929C230020F8BB /* marble-on-wall.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 462C7B6118929C230020F8BB /* marble-on-wall.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		462C7B141891E3DE0020F8BB /* UIColor+RandomColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+RandomColor.h"; path = "Categories/UIColor+RandomColor.h"; sourceTree = "<group>"; };
 		462C7B151891E3DE0020F8BB /* UIColor+RandomColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+RandomColor.m"; path = "Categories/UIColor+RandomColor.m"; sourceTree = "<group>"; };
 		462C7B171891F1130020F8BB /* BAGViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BAGViewController.xib; sourceTree = "<group>"; };
+		462C7B6018929C230020F8BB /* marble-on-marble.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "marble-on-marble.m4a"; sourceTree = "<group>"; };
+		462C7B6118929C230020F8BB /* marble-on-wall.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "marble-on-wall.m4a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 				462C7B141891E3DE0020F8BB /* UIColor+RandomColor.h */,
 				462C7B151891E3DE0020F8BB /* UIColor+RandomColor.m */,
 				462C7AF41891DDD40020F8BB /* Images.xcassets */,
+				462C7B5F18929C230020F8BB /* Audio */,
 				462C7AE31891DDD40020F8BB /* Supporting Files */,
 			);
 			path = BallGame;
@@ -160,6 +165,15 @@
 				462C7B041891DDD40020F8BB /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		462C7B5F18929C230020F8BB /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				462C7B6018929C230020F8BB /* marble-on-marble.m4a */,
+				462C7B6118929C230020F8BB /* marble-on-wall.m4a */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +254,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				462C7B181891F1130020F8BB /* BAGViewController.xib in Resources */,
+				462C7B6318929C230020F8BB /* marble-on-wall.m4a in Resources */,
+				462C7B6218929C230020F8BB /* marble-on-marble.m4a in Resources */,
 				462C7AF51891DDD40020F8BB /* Images.xcassets in Resources */,
 				462C7AE71891DDD40020F8BB /* InfoPlist.strings in Resources */,
 			);
@@ -471,6 +487,7 @@
 				462C7B0D1891DDD40020F8BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		462C7B0E1891DDD40020F8BB /* Build configuration list for PBXNativeTarget "BallGameTests" */ = {
 			isa = XCConfigurationList;
@@ -479,6 +496,7 @@
 				462C7B101891DDD40020F8BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
