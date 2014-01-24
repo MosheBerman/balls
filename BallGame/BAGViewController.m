@@ -42,7 +42,7 @@
         _collision = [[UICollisionBehavior alloc] init];
         _collision.translatesReferenceBoundsIntoBoundary = YES;
         [_animator addBehavior:_collision];
-        
+        _collision.collisionDelegate = self;
         
     }
     return self;
@@ -225,6 +225,17 @@
     if ([item1 isKindOfClass:[BAGBall class]] && [item2 isKindOfClass:[BAGBall class]])
     {
         
+        BAGBall *firstBall = (BAGBall *)item1;
+        BAGBall *secondBall = (BAGBall *)item2;
+        
+        UIColor *firstColor = [firstBall activeColor];
+        UIColor *secondColor = [secondBall activeColor];
+        
+        UIColor *averageColor = [UIColor averageBetweenColor:firstColor andColor:secondColor];
+        
+        [UIView animateWithDuration:1.0 animations:^{
+            [[self view] setBackgroundColor:averageColor];
+        }];
     }
     
     /* If  a ball collides with a boundry or UI elemeent. */
