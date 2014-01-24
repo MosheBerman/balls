@@ -51,7 +51,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     //  By default, grayscale UI.
     [[self view] setTintColor:[UIColor grayColor]];
 }
@@ -142,7 +142,7 @@
     for (BAGBall *ball in [self ballsToAdd])
     {
         [[self balls] addObject:ball];
-
+        
         __weak BAGBall *weakBall = ball;
         [ball addToSuperview:self.view WithAnimationCompletion:^{
             
@@ -199,7 +199,7 @@
 
 - (IBAction)didToggleColor:(id)sender
 {
-
+    
     BOOL isGray = [self isGrayscale];
     
     if (isGray) {
@@ -233,9 +233,16 @@
         
         UIColor *averageColor = [UIColor averageBetweenColor:firstColor andColor:secondColor];
         
-        [UIView animateWithDuration:1.0 animations:^{
-            [[self view] setBackgroundColor:averageColor];
-        }];
+        [UIView animateWithDuration:0.2
+                              delay:0.0
+                            options:UIViewAnimationOptionAllowUserInteraction
+                         animations:^{
+                             [[self view] setBackgroundColor:averageColor];
+                             
+                         }
+                         completion:^(BOOL finished) {
+                             
+                         }];
     }
     
     /* If  a ball collides with a boundry or UI elemeent. */
