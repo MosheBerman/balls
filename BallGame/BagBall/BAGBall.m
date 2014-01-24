@@ -38,6 +38,7 @@
         _grayColor = [UIColor grayColor];
         _borderWidth = arc4random() % 10 + 1;
         _touchToFollow = nil;
+        _isGrayScale = NO;
     }
     return self;
 }
