@@ -10,6 +10,10 @@
 
 #import "BAGBall.h"
 
+#import <tgmath.h>
+
+@import CoreMotion;
+
 @interface BAGViewController () <UICollisionBehaviorDelegate>
 
 @property (nonatomic, strong) NSMutableArray *balls;
@@ -22,6 +26,10 @@
 @property (nonatomic, strong) UICollisionBehavior *collision;
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *colorToggle;
+
+@property (nonatomic, strong) CMMotionManager *motionManager;
+@property (nonatomic, strong) CMAccelerometerData *data;
+@property (nonatomic, assign) CGPoint originalCenter;
 
 @end
 
@@ -43,6 +51,8 @@
         _collision.translatesReferenceBoundsIntoBoundary = YES;
         [_animator addBehavior:_collision];
         _collision.collisionDelegate = self;
+        _motionManager = [[CMMotionManager alloc] init];
+        _originalCenter = CGPointZero;
         
     }
     return self;
@@ -54,6 +64,8 @@
     
     //  By default, grayscale UI.
     [[self view] setTintColor:[UIColor grayColor]];
+
+    [self reposition];
 }
 
 - (void)didReceiveMemoryWarning
@@ -178,22 +190,6 @@
     }
 }
 
-#pragma mark - Rotation
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-{
-    return YES;
-}
-
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    
-}
 
 #pragma mark - Color Toggle
 
@@ -264,6 +260,58 @@
 {
     return [[self colorToggle] selectedSegmentIndex] == 0;
 }
+
+#pragma mark - Accelerometer Based Gravity
+
+- (void)reposition
+{
+    if (CGPointEqualToPoint(_originalCenter, CGPointZero))
+    {
+        _originalCenter = self.view.center;
+    }
+    
+    static CGFloat lastX = 0.0f;
+    static CGFloat lastY = 0.0f;
+    
+    __block __weak BAGViewController *weakSelf = self;
+    
+    BOOL available = [[self motionManager] isAccelerometerAvailable];
+    
+    if (!available) {
+        NSLog(@"No gyro.");
+    }
+    
+    [[self motionManager] startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
+        
+        weakSelf.data = accelerometerData;
+        
+        CGPoint center = self.view.center;
+        
+        center.x += self.data.acceleration.x;
+        center.y -= self.data.acceleration.y;
+        
+        lastX = self.data.acceleration.x;
+        lastY = self.data.acceleration.y;
+        
+        CGFloat factor = [self nudgeFactor];
+        
+        center.x = _originalCenter.x + (lastX * factor);
+        center.y = _originalCenter.y + (lastY * factor);
+        
+        CGFloat angle = atan(center.x/center.y);
+        
+        NSLog(@"%.2f", angle);
+        
+        [[self gravity] setAngle:angle magnitude:1.0];
+
+    }];
+}
+
+- (CGFloat)nudgeFactor
+{
+    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 50.0f : 20.0f;
+}
+
 
 
 
