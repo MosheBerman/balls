@@ -21,6 +21,8 @@
 @property (nonatomic, strong) UIGravityBehavior *gravity;
 @property (nonatomic, strong) UICollisionBehavior *collision;
 
+@property (strong, nonatomic) IBOutlet UISegmentedControl *colorToggle;
+
 @end
 
 @implementation BAGViewController
@@ -40,6 +42,8 @@
         _collision = [[UICollisionBehavior alloc] init];
         _collision.translatesReferenceBoundsIntoBoundary = YES;
         [_animator addBehavior:_collision];
+        
+        
     }
     return self;
 }
@@ -125,6 +129,7 @@
     CGFloat randomRadius = arc4random() % 50 + 15;
     BAGBall *ball = [BAGBall ballWithRadius:randomRadius];
     ball.center = point;
+    [ball setIsGrayScale:([[self colorToggle] selectedSegmentIndex] == 0)];
     [[self ballsToAdd] addObject:ball];
 }
 
@@ -149,14 +154,14 @@
     [[self ballsToAdd] removeAllObjects];
 }
 
+#pragma mark - Remove Extra Balls
+
 - (void)removeExtraBalls
 {
     NSMutableArray *ballsToRemove = [[NSMutableArray alloc] init];
     
     NSInteger extraBalls = self.balls.count - self.maximumVisibleBalls;
     extraBalls = MAX(0, extraBalls);
-    
-    
     
     for (NSInteger i = 0; i < extraBalls; i++) {
         [ballsToRemove addObject:[self balls][i]];
@@ -171,8 +176,33 @@
     }
 }
 
+#pragma mark - Rotation
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
     return YES;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    
+}
+
+#pragma mark - Color Toggle
+
+- (IBAction)didToggleColor:(id)sender
+{
+
+    BOOL isGray = [[self colorToggle] selectedSegmentIndex] == 0;
+    
+    for (BAGBall *ball in [self balls]) {
+        [ball setIsGrayScale:isGray];
+    }
+    
 }
 @end
