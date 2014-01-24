@@ -14,6 +14,7 @@ typedef void(^BAGBallAnimationCompletionBlock)(void);
 @interface BAGBall : UIView
 
 @property (nonatomic, strong) UIColor *color;
+@property (nonatomic, assign) BOOL isGrayScale;
 @property (nonatomic, assign) CGFloat borderWidth;
 @property (nonatomic, strong) UITouch *touchToFollow;
 

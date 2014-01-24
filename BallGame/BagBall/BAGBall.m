@@ -14,6 +14,7 @@
 
 @property (nonatomic, assign) CGFloat radius;
 @property (nonatomic, strong) BAGBallAnimationCompletionBlock installationCompletion;
+@property (nonatomic, strong) UIColor *grayColor;
 
 @end
 
@@ -34,6 +35,7 @@
         // Initialization code
         _radius = radius;
         _color = [UIColor randomColor];
+        _grayColor = [UIColor grayColor];
         _borderWidth = arc4random() % 10 + 1;
         _touchToFollow = nil;
     }
@@ -86,6 +88,23 @@
     
 }
 
+
+#pragma mark - Setter
+
+- (void)setIsGrayScale:(BOOL)isGrayScale
+{
+    _isGrayScale = isGrayScale;
+    
+    if (isGrayScale) {
+        self.layer.borderColor = self.grayColor.CGColor;
+        self.backgroundColor = [self.grayColor colorWithAlphaComponent:0.8];
+    }
+    else
+    {
+        self.layer.borderColor = self.color.CGColor;
+        self.backgroundColor = [self.color colorWithAlphaComponent:0.8];
+    }
+}
 #pragma mark - Appear
 
 - (void)addToSuperview:(UIView *)view WithAnimationCompletion:(BAGBallAnimationCompletionBlock)completion
