@@ -35,7 +35,7 @@
         // Initialization code
         _radius = radius;
         _color = [UIColor randomColor];
-        _grayColor = [UIColor grayColor];
+        _grayColor = [UIColor randomShadeOfGray];
         _borderWidth = arc4random() % 10 + 1;
         _touchToFollow = nil;
         _isGrayScale = NO;
@@ -56,9 +56,8 @@
 {
     [super willMoveToSuperview:newSuperview];
     self.layer.cornerRadius = _radius;
-    self.layer.borderColor = self.color.CGColor;
-    self.backgroundColor = [self.color colorWithAlphaComponent:0.8];
     self.layer.borderWidth = self.borderWidth;
+    [self applyColor];
     
     self.alpha = 0;
     self.transform = CGAffineTransformIdentity;
@@ -96,7 +95,12 @@
 {
     _isGrayScale = isGrayScale;
     
-    if (isGrayScale) {
+    [self applyColor];
+}
+
+- (void)applyColor
+{
+    if ([self isGrayScale]) {
         self.layer.borderColor = self.grayColor.CGColor;
         self.backgroundColor = [self.grayColor colorWithAlphaComponent:0.8];
     }
