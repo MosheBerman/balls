@@ -29,4 +29,4 @@ Balls requires iOS 7 to run because it makes use of new technologies included wi
 
 License:
 ---
-All rights reserved. 
+Please don't redistribute or sell this in any form, modified or otherwise. All rights reserved. 
