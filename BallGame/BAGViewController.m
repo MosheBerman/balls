@@ -12,7 +12,9 @@
 
 @interface BAGViewController ()
 
-@property (nonatomic, strong) NSMutableArray *balls;
+@property (nonatomic, strong) NSMutableSet *balls;
+@property (nonatomic, strong) NSMutableSet *uninstalledBalls;
+@property (nonatomic, assign) NSInteger maximumVisibleBalls;
 
 @end
 
@@ -22,7 +24,9 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        _balls = [[NSMutableArray alloc] init];
+        _balls = [[NSMutableSet alloc] init];
+        _uninstalledBalls = [[NSMutableSet alloc] init];
+        _maximumVisibleBalls = 20;
     }
     return self;
 }
@@ -53,19 +57,12 @@
 {
     for (UITouch *touch in touches)
     {
-        
         CGPoint location = [touch locationInView:self.view];
-        
-        if ([[self balls] count] == 0)
-        {
-            [self newBallAtPoint:location];
-        }
-        
-        
         [self newBallAtPoint:location];
-        
-        
     }
+    
+    [self installQueuedBalls];
+
     
     
 }
@@ -78,9 +75,32 @@
     CGFloat randomRadius = arc4random() % 50 + 15;
     BAGBall *ball = [BAGBall ballWithRadius:randomRadius];
     ball.center = point;
-    [[self balls] addObject:ball];
-    [[self view] addSubview:ball];
+    [[self uninstalledBalls] addObject:ball];
+}
+
+#pragma mark - Install Queued Balls
+
+- (void)installQueuedBalls
+{
+    for (BAGBall *ball in [self uninstalledBalls]) {
+        
+        BAGBall *ballToRemove = [[self balls] anyObject];
+        
+        [[self balls] addObject:ball];
+
+        [ball addToSuperview:self.view WithAnimationCompletion:^{
+            
+            if ([[self balls] count] > self.maximumVisibleBalls) {
+
+                [ballToRemove removeFromSuperviewWithAnimationCompletion:^{
+                    [[self balls] removeObject:ballToRemove];
+                }];
+                
+            }
+        }];
+    }
     
+    [[self uninstalledBalls] removeAllObjects];
 }
 
 @end
