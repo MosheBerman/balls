@@ -16,4 +16,6 @@
 
 + (UIColor *)averageBetweenColor:(UIColor *)color andColor:(UIColor *)anotherColor;
 
+- (UIColor *)inverseColor;
+
 @end
