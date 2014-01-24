@@ -23,8 +23,9 @@
 		462C7B131891DDEE0020F8BB /* BAGBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C7B121891DDEE0020F8BB /* BAGBall.m */; };
 		462C7B161891E3DE0020F8BB /* UIColor+RandomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 462C7B151891E3DE0020F8BB /* UIColor+RandomColor.m */; };
 		462C7B181891F1130020F8BB /* BAGViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 462C7B171891F1130020F8BB /* BAGViewController.xib */; };
-		462C7B6218929C230020F8BB /* marble-on-marble.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 462C7B6018929C230020F8BB /* marble-on-marble.m4a */; };
-		462C7B6318929C230020F8BB /* marble-on-wall.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 462C7B6118929C230020F8BB /* marble-on-wall.m4a */; };
+		462C7B6218929C230020F8BB /* collision.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 462C7B6018929C230020F8BB /* collision.m4a */; };
+		462C7B6318929C230020F8BB /* shatter.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 462C7B6118929C230020F8BB /* shatter.m4a */; };
+		462C7B6518929CF10020F8BB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462C7B6418929CF10020F8BB /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,8 +62,9 @@
 		462C7B141891E3DE0020F8BB /* UIColor+RandomColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+RandomColor.h"; path = "Categories/UIColor+RandomColor.h"; sourceTree = "<group>"; };
 		462C7B151891E3DE0020F8BB /* UIColor+RandomColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+RandomColor.m"; path = "Categories/UIColor+RandomColor.m"; sourceTree = "<group>"; };
 		462C7B171891F1130020F8BB /* BAGViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BAGViewController.xib; sourceTree = "<group>"; };
-		462C7B6018929C230020F8BB /* marble-on-marble.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "marble-on-marble.m4a"; sourceTree = "<group>"; };
-		462C7B6118929C230020F8BB /* marble-on-wall.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "marble-on-wall.m4a"; sourceTree = "<group>"; };
+		462C7B6018929C230020F8BB /* collision.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = collision.m4a; sourceTree = "<group>"; };
+		462C7B6118929C230020F8BB /* shatter.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = shatter.m4a; sourceTree = "<group>"; };
+		462C7B6418929CF10020F8BB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				462C7B6518929CF10020F8BB /* AVFoundation.framework in Frameworks */,
 				462C7ADF1891DDD40020F8BB /* CoreGraphics.framework in Frameworks */,
 				462C7AE11891DDD40020F8BB /* UIKit.framework in Frameworks */,
 				462C7ADD1891DDD40020F8BB /* Foundation.framework in Frameworks */,
@@ -111,6 +114,7 @@
 		462C7ADB1891DDD40020F8BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				462C7B6418929CF10020F8BB /* AVFoundation.framework */,
 				462C7ADC1891DDD40020F8BB /* Foundation.framework */,
 				462C7ADE1891DDD40020F8BB /* CoreGraphics.framework */,
 				462C7AE01891DDD40020F8BB /* UIKit.framework */,
@@ -170,8 +174,8 @@
 		462C7B5F18929C230020F8BB /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				462C7B6018929C230020F8BB /* marble-on-marble.m4a */,
-				462C7B6118929C230020F8BB /* marble-on-wall.m4a */,
+				462C7B6018929C230020F8BB /* collision.m4a */,
+				462C7B6118929C230020F8BB /* shatter.m4a */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -254,8 +258,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				462C7B181891F1130020F8BB /* BAGViewController.xib in Resources */,
-				462C7B6318929C230020F8BB /* marble-on-wall.m4a in Resources */,
-				462C7B6218929C230020F8BB /* marble-on-marble.m4a in Resources */,
+				462C7B6318929C230020F8BB /* shatter.m4a in Resources */,
+				462C7B6218929C230020F8BB /* collision.m4a in Resources */,
 				462C7AF51891DDD40020F8BB /* Images.xcassets in Resources */,
 				462C7AE71891DDD40020F8BB /* InfoPlist.strings in Resources */,
 			);
