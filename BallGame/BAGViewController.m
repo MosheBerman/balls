@@ -27,6 +27,7 @@
 @property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) UIGravityBehavior *gravity;
 @property (nonatomic, strong) UICollisionBehavior *collision;
+@property (nonatomic, strong) UIDynamicItemBehavior *bounceBehavior;
 
 /* Color vs Grayscale */
 @property (strong, nonatomic) IBOutlet UISegmentedControl *colorToggle;
@@ -52,10 +53,10 @@
         _balls = [[NSMutableArray alloc] init];
         _ballsToAdd = [[NSMutableSet alloc] init];
         _oldBalls = [[NSMutableSet alloc] init];
-        _maximumVisibleBalls = 10;
-        
+        _maximumVisibleBalls = 5;
         _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
         _gravity = [[UIGravityBehavior alloc] initWithItems:@[]];
+        _gravity.magnitude = 0.7;
         [_animator addBehavior:_gravity];
         _collision = [[UICollisionBehavior alloc] init];
         _collision.translatesReferenceBoundsIntoBoundary = YES;
@@ -63,6 +64,10 @@
         _collision.collisionDelegate = self;
         _motionManager = [[CMMotionManager alloc] init];
         _originalCenter = CGPointZero;
+        _bounceBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[ ]];
+        _bounceBehavior.elasticity = 1.0;
+        _bounceBehavior.friction = 0.0;
+        [_animator addBehavior:_bounceBehavior];
     }
     return self;
 }
@@ -75,7 +80,7 @@
     [[self view] setTintColor:[UIColor grayColor]];
     
     /* Configure Sounds */
-    NSURL *sound = [[NSBundle mainBundle] URLForResource:@"collision" withExtension:@"m4a"];
+    NSURL *sound = [[NSBundle mainBundle] URLForResource:@"pop" withExtension:@"m4a"];
 	
 	_ballAgainstBallFileURLRef = CFBridgingRetain(sound);
 	
