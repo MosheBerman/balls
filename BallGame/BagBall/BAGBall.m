@@ -9,12 +9,23 @@
 #import "BAGBall.h"
 
 @import QuartzCore;
+@import AVFoundation;
 
 @interface BAGBall ()
 
 @property (nonatomic, assign) CGFloat radius;
 @property (nonatomic, strong) BAGBallAnimationCompletionBlock installationCompletion;
 @property (nonatomic, strong) UIColor *grayColor;
+
+/* Sound Effects */
+@property (readwrite) CFURLRef spawnSoundFileRef;
+@property (readwrite) CFURLRef dieSoundFileRef;
+
+@property (readonly) SystemSoundID spawnSoundID;
+@property (readonly) SystemSoundID dieSoundID;
+
+/* Long press to pop.*/
+@property (nonatomic, strong) UILongPressGestureRecognizer *longPop;
 
 @end
 
@@ -39,6 +50,21 @@
         _borderWidth = arc4random() % 10 + 1;
         _touchToFollow = nil;
         _isGrayScale = NO;
+        
+        _longPop = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pop)];
+        
+        /* Sound */
+        NSURL *sound = [[NSBundle mainBundle] URLForResource:@"spawn" withExtension:@"m4a"];
+        
+        _spawnSoundFileRef = CFBridgingRetain(sound);
+        
+        AudioServicesCreateSystemSoundID(_spawnSoundFileRef, &_spawnSoundID);
+        
+        sound = [[NSBundle mainBundle] URLForResource:@"pop" withExtension:@"m4a"];
+        
+        _dieSoundFileRef = CFBridgingRetain(sound);
+        
+        AudioServicesCreateSystemSoundID(_dieSoundFileRef, &_dieSoundID);
     }
     return self;
 }
@@ -68,6 +94,8 @@
 {
     [super didMoveToSuperview];
     
+    AudioServicesPlaySystemSound(_spawnSoundID);
+    
     [UIView animateWithDuration:0.1
                      animations:^{
                          self.alpha = 1.0;
@@ -87,7 +115,6 @@
                      }];
     
 }
-
 
 #pragma mark - Setter
 
@@ -122,7 +149,6 @@
 
 - (void)removeFromSuperviewWithAnimationCompletion:(BAGBallAnimationCompletionBlock)completion
 {
-    
     [UIView animateWithDuration:0.1f
                      animations:^{
                          CGAffineTransform t = CGAffineTransformScale(self.transform, 0, 0);
@@ -138,6 +164,14 @@
                          }
                      }];
     
+}
+
+- (void)pop
+{
+    AudioServicesPlaySystemSound(_dieSoundID);
+    [self removeFromSuperviewWithAnimationCompletion:^{
+        
+    }];
 }
 
 #pragma mark - Active Color
