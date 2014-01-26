@@ -26,6 +26,8 @@
 		462C7B6218929C230020F8BB /* collision.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 462C7B6018929C230020F8BB /* collision.m4a */; };
 		462C7B6318929C230020F8BB /* shatter.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 462C7B6118929C230020F8BB /* shatter.m4a */; };
 		462C7B6518929CF10020F8BB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462C7B6418929CF10020F8BB /* AVFoundation.framework */; };
+		46BF72FD1892E3A000A6904B /* pop.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46BF72FB1892E3A000A6904B /* pop.m4a */; };
+		46BF72FE1892E3A000A6904B /* spawn.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46BF72FC1892E3A000A6904B /* spawn.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		462C7B6018929C230020F8BB /* collision.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = collision.m4a; sourceTree = "<group>"; };
 		462C7B6118929C230020F8BB /* shatter.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = shatter.m4a; sourceTree = "<group>"; };
 		462C7B6418929CF10020F8BB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		46BF72FB1892E3A000A6904B /* pop.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = pop.m4a; sourceTree = "<group>"; };
+		46BF72FC1892E3A000A6904B /* spawn.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = spawn.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,8 @@
 		462C7B5F18929C230020F8BB /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				46BF72FB1892E3A000A6904B /* pop.m4a */,
+				46BF72FC1892E3A000A6904B /* spawn.m4a */,
 				462C7B6018929C230020F8BB /* collision.m4a */,
 				462C7B6118929C230020F8BB /* shatter.m4a */,
 			);
@@ -257,11 +263,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46BF72FD1892E3A000A6904B /* pop.m4a in Resources */,
 				462C7B181891F1130020F8BB /* BAGViewController.xib in Resources */,
 				462C7B6318929C230020F8BB /* shatter.m4a in Resources */,
 				462C7B6218929C230020F8BB /* collision.m4a in Resources */,
 				462C7AF51891DDD40020F8BB /* Images.xcassets in Resources */,
 				462C7AE71891DDD40020F8BB /* InfoPlist.strings in Resources */,
+				46BF72FE1892E3A000A6904B /* spawn.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
